@@ -41,17 +41,17 @@ var controls = {
 	rain : 2,
 	Object : "Nothing",
 	alpha : 1,
-	color : 200,
+	color : 300,
 	auto : false,
 	opacity : 1,
-	saturation : 100,
-	lightness : 50,
+	saturation : 80,
+	lightness : 40,
 	back : 100,
 	red : 0,
 	green : 0,
 	blue : 0,
 	multi : false,
-	speed : 2
+	speed : 9
 };
 
 function Rain(X, Y, nombre) {
