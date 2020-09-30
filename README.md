@@ -1,2 +1,2 @@
-# drip
-drip drip
+# DRIP JS
+Open index.html in a browser and watch it rain...
