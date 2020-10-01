@@ -44,14 +44,14 @@ var controls = {
 	color : 300,
 	auto : false,
 	opacity : 1,
-	saturation : 80,
-	lightness : 40,
+	saturation : 100,
+	lightness : 100,
 	back : 100,
 	red : 0,
 	green : 0,
 	blue : 0,
 	multi : false,
-	speed : 9
+	speed : 1
 };
 
 function Rain(X, Y, nombre) {
@@ -159,28 +159,28 @@ function update() {
 	var goutteslocales = gouttes;
 	
 	for (var i = 0, particulesactives; particulesactives = particuleslocales[i]; i++) {
-		particulesactives.X += particulesactives.vitesseX;
-		particulesactives.Y += particulesactives.vitesseY+5;
+		particulesactives.X += particulesactives.vitesseX+2*Math.sin(particulesactives.vitesseY)+Math.random()*2*Math.sin(particulesactives.vitesseY);
+		particulesactives.Y += particulesactives.vitesseY+0.1;
 		if (particulesactives.Y > height-15) {
 			particuleslocales.splice(i--, 1);
-			explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+			//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 		}
 		var umbrella = (particulesactives.X - mouse.X)*(particulesactives.X - mouse.X) + (particulesactives.Y - mouse.Y)*(particulesactives.Y - mouse.Y);
 			if (controls.Object == "Umbrella") {
 				if (umbrella < 20000 && umbrella > 10000 && particulesactives.Y < mouse.Y) {
-					explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
 			if (controls.Object == "Cup") {
 				if (umbrella > 20000 && umbrella < 30000 && particulesactives.X+138 > mouse.X && particulesactives.X-138 < mouse.X && particulesactives.Y > mouse.Y) {
-					explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
 			if (controls.Object == "Circle") {
 				if (umbrella < 20000) {
-					explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					//(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
@@ -216,7 +216,7 @@ window.onload = function() {
 	gui.add(controls, 'alpha', 0.1, 1).name("Alpha").step(0.1);
 	gui.add(controls, 'color', 0, 360).name("Color").step(1).listen();
 	gui.add(controls, 'auto').name("Automatic color");
-	gui.add(controls, 'speed', 1, 10).name("Speed color").step(1);
+	gui.add(controls, 'speed', 0, 10).name("Speed color").step(1);
 	gui.add(controls, 'multi').name("Multicolor");
 	gui.add(controls, 'saturation', 0, 100).name("Saturation").step(1);
 	gui.add(controls, 'lightness', 0, 100).name("Lightness").step(1);
