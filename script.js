@@ -78,11 +78,11 @@ function explosion(X, Y, couleur, nombre) {
 	while (nombre--) {
 		gouttes.push( 
 		{
-			vitesseX : (Math.random() * 4-2	),
-			vitesseY : (Math.random() * -4 ),
+			vitesseX : (Math.random() * 5-2	),
+			vitesseY : (Math.random() * -3 ),
 			X : X,
 			Y : Y,
-			radius : 0.65 + Math.floor(Math.random() *1.6),
+			radius : 0.65 + Math.floor(Math.random() *1.8),
 			alpha : 1,
 			couleur : couleur
 		})
