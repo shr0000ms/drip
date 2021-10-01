@@ -61,8 +61,8 @@ function Rain(X, Y, nombre) {
 	while (nombre--) {
 		particules.push( 
 		{
-			vitesseX : (Math.random() * 0.25),
-			vitesseY : (Math.random() * 9) + 1,
+			vitesseX : (Math.random() * 0),
+			vitesseY : (Math.random() * 60) + 1,
 			X : X,
 			Y : Y,
 			alpha : 1,
@@ -159,28 +159,28 @@ function update() {
 	var goutteslocales = gouttes;
 	
 	for (var i = 0, particulesactives; particulesactives = particuleslocales[i]; i++) {
-		particulesactives.X += particulesactives.vitesseX+2*Math.sin(particulesactives.vitesseY)+Math.random()*2*Math.sin(particulesactives.vitesseY);
-		particulesactives.Y += particulesactives.vitesseY+0.1;
+		particulesactives.X += particulesactives.vitesseY+2*Math.cos(particulesactives.vitesseX)+Math.random()*2*Math.cos(particulesactives.vitesseX);
+		particulesactives.Y += particulesactives.vitesseY+0.1+2*Math.sin(particulesactives.vitesseY)+Math.random()*2*Math.sin(particulesactives.vitesseY);
 		if (particulesactives.Y > height-15) {
 			particuleslocales.splice(i--, 1);
-			//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+			explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 		}
 		var umbrella = (particulesactives.X - mouse.X)*(particulesactives.X - mouse.X) + (particulesactives.Y - mouse.Y)*(particulesactives.Y - mouse.Y);
 			if (controls.Object == "Umbrella") {
 				if (umbrella < 20000 && umbrella > 10000 && particulesactives.Y < mouse.Y) {
-					//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
 			if (controls.Object == "Cup") {
 				if (umbrella > 20000 && umbrella < 30000 && particulesactives.X+138 > mouse.X && particulesactives.X-138 < mouse.X && particulesactives.Y > mouse.Y) {
-					//explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					explosion(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
 			if (controls.Object == "Circle") {
 				if (umbrella < 20000) {
-					//(particulesactives.X, particulesactives.Y, particulesactives.couleur);
+					(particulesactives.X, particulesactives.Y, particulesactives.couleur);
 					particuleslocales.splice(i--, 1);
 				}
 			}
